@@ -43,9 +43,7 @@ public class BearAdapter extends RecyclerView.Adapter<BearAdapter.BearViewHolder
         BearItem bearItem = bearList.get(position);
         holder.bearTypeTextView.setText(bearItem.getName());
 
-        // You can update the ImageView in MainActivity here
-        // For example, if bearItem has an image resource or URL, you can set it to bearImageView
-        // For now, we'll set a placeholder image.
+        // using a bear png file as a placeholder, change to url later
         bearImageView.setImageResource(R.drawable.bear_image_placeholder);
     }
 
