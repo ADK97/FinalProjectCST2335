@@ -3,6 +3,7 @@ package algonquin.cst2335.finalprojectcst2335;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,22 +14,22 @@ import java.util.List;
 public class BearAdapter extends RecyclerView.Adapter<BearAdapter.BearViewHolder> {
 
     private List<BearItem> bearList;
+    private ImageView bearImageView; // Reference to the ImageView in MainActivity
 
-    public BearAdapter(List<BearItem> bearList) {
+    public BearAdapter(List<BearItem> bearList, ImageView bearImageView) {
         this.bearList = bearList;
+        this.bearImageView = bearImageView;
     }
 
-    // Create a ViewHolder to hold the views for one item in the RecyclerView
     public static class BearViewHolder extends RecyclerView.ViewHolder {
-        public TextView bearNameTextView;
+        public TextView bearTypeTextView;
 
         public BearViewHolder(View itemView) {
             super(itemView);
-            bearNameTextView = itemView.findViewById(R.id.bearNameTextView);
+            bearTypeTextView = itemView.findViewById(R.id.bearNameTextView);
         }
     }
 
-    // Inflate the item layout and create a ViewHolder
     @NonNull
     @Override
     public BearViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -37,17 +38,19 @@ public class BearAdapter extends RecyclerView.Adapter<BearAdapter.BearViewHolder
         return new BearViewHolder(itemView);
     }
 
-    // Bind the data to the ViewHolder
     @Override
     public void onBindViewHolder(@NonNull BearViewHolder holder, int position) {
         BearItem bearItem = bearList.get(position);
-        holder.bearNameTextView.setText(bearItem.getName());
+        holder.bearTypeTextView.setText(bearItem.getName());
+
+        // You can update the ImageView in MainActivity here
+        // For example, if bearItem has an image resource or URL, you can set it to bearImageView
+        // For now, we'll set a placeholder image.
+        bearImageView.setImageResource(R.drawable.bear_image_placeholder);
     }
 
-    // Return the number of items in the RecyclerView
     @Override
     public int getItemCount() {
         return bearList.size();
     }
 }
-
